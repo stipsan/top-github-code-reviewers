@@ -13,7 +13,7 @@ const client = createClient(access_token)
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <App owner="sindresorhus" name="refined-github" />
   </ApolloProvider>,
   document.getElementById('root')
 )
