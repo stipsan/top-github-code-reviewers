@@ -38,46 +38,6 @@ class App extends Component {
             />
           )}
           <rect fill="url(#b)" x="79" y="97" width="51" height="47" rx="8" />
-          <path
-            d="M1.5 163.5h639.003"
-            stroke="#EAECEF"
-            strokeLinecap="square"
-          />
-          <text fontSize="22" fill="#FFF">
-            <tspan x="20" y="120">
-              🥇
-            </tspan>
-          </text>
-          <text fontSize="22" fill="#000">
-            <tspan x="13" y="223">
-              🥈
-            </tspan>
-          </text>
-          <text fontSize="22" fill="#000">
-            <tspan x="13" y="308">
-              🥉
-            </tspan>
-          </text>
-          <text
-            font-family="Helvetica"
-            font-size="22"
-            letter-spacing=".81"
-            fill="#586069"
-          >
-            <tspan x="147" y="120">
-              Winner
-            </tspan>
-          </text>
-          <text
-            font-family="Helvetica"
-            font-size="22"
-            letter-spacing=".81"
-            fill="#586069"
-          >
-            <tspan x="554" y="126">
-              10
-            </tspan>
-          </text>
           <text
             font-family="Helvetica"
             font-size="22"
@@ -89,14 +49,14 @@ class App extends Component {
             </tspan>
           </text>
           <text
-            font-family="Helvetica"
-            font-size="22"
-            letter-spacing=".81"
+            fontFamily="Helvetica"
+            fontSize="22"
             fill="#586069"
+            textAnchor="end"
+            x="536"
+            y="26"
           >
-            <tspan x="536" y="26">
-              Score
-            </tspan>
+            SCORE
           </text>
         </g>
       </svg>

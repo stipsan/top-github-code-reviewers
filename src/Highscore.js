@@ -31,6 +31,17 @@ export default props => {
       <text fontSize="24" fill="#000" x="96" y={yTop + 32}>
         {reviewer.author.login}
       </text>
+
+      <text
+        fontFamily="Helvetica"
+        fontSize="32px"
+        fill="#586069"
+        x={`${width - 32}`}
+        y={yTop + 44}
+        textAnchor="end"
+      >
+        {reviewer.score}
+      </text>
     </g>
   )
 }
