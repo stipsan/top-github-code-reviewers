@@ -5,7 +5,6 @@ import calcScores from './utils/calc-scores'
 import Highscore from './Highscore'
 
 const width = 640
-const height = 640
 
 class App extends Component {
   render() {
@@ -18,6 +17,8 @@ class App extends Component {
 
     const { topReviewers } = calcScores(repository.pullRequests)
 
+    const height = (64 * topReviewers.length) + 32
+
     return (
       <svg
         width="100%"
@@ -28,6 +29,25 @@ class App extends Component {
       >
         <title>Artboard</title>
         <g fill="none" fillRule="evenodd">
+          <text
+            fontFamily="Helvetica"
+            fontSize="22"
+            fill="#586069"
+            x="72"
+            y="24"
+          >
+              TOP CODE REVIEWERS
+          </text>
+          <text
+            fontFamily="Helvetica"
+            fontSize="22"
+            fill="#586069"
+            textAnchor="end"
+            x={`${width - 24}`}
+            y="24"
+          >
+            SCORE
+          </text>
           {topReviewers.map((reviewer, index) =>
             <Highscore
               key={reviewer.author.login}
@@ -38,26 +58,6 @@ class App extends Component {
             />
           )}
           <rect fill="url(#b)" x="79" y="97" width="51" height="47" rx="8" />
-          <text
-            font-family="Helvetica"
-            font-size="22"
-            letter-spacing=".81"
-            fill="#586069"
-          >
-            <tspan x="38" y="37">
-              Top Code Reviewers
-            </tspan>
-          </text>
-          <text
-            fontFamily="Helvetica"
-            fontSize="22"
-            fill="#586069"
-            textAnchor="end"
-            x="536"
-            y="26"
-          >
-            SCORE
-          </text>
         </g>
       </svg>
     )
