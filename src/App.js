@@ -25,9 +25,42 @@ class App extends Component {
 }
 
 export default graphql(gql`
-  query TodoAppQuery {
-    viewer {
-      email
+  query($owner:String!, $name:String!) {
+    rateLimit {
+      limit
+      cost
+      remaining
+      resetAt
+    }
+    repository(owner:$owner, name:$name) {
+      pullRequests(last:100, states: MERGED) {
+        edges {
+          node {
+            reviews(last: 10) {
+              edges {
+                node {
+                  author {
+                    avatarUrl
+                    login
+                  }
+                  body
+                  state
+                  comments(last: 100) {
+                    totalCount
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
-`)(App);
+`, {
+  options: ({repo, name}) => ({
+    variables: {
+      repo,
+      name
+    },
+  }),
+})(App);
