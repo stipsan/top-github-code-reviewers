@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { gql, graphql } from 'react-apollo'
-import logo from './logo.svg'
 
+import calcScores from './utils/calc-scores'
 import Test from './Test'
 
 class App extends Component {
   render() {
-    const data = JSON.stringify(this.props.data, null, 2)
+    const {repository, loading} = this.props.data
 
-    
+    if(loading) {
+      return false
+    }
+    const data = JSON.stringify(calcScores(repository.pullRequests), null, 2)
 
     return (
       <div className="App">
