@@ -1,6 +1,6 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 
-export default token => {
+export default (token, options = {}) => {
   const networkInterface = createNetworkInterface({
     uri: 'https://api.github.com/graphql',
   })
@@ -19,5 +19,6 @@ export default token => {
 
   return new ApolloClient({
     networkInterface,
+    ...options,
   })
 }

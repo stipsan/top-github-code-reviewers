@@ -4,9 +4,10 @@
   "private": true,
   "dependencies": {
     "apollo-client": "1.9.0-1",
+    "babel-register": "6.24.1",
     "express": "4.15.3",
     "graphql-tag": "2.4.2",
-    "next": "https://github.com/arunoda/next.js#react-fiber-support",
+    "next-react-fiber-fork": "^3.0.1-beta.19",
     "query-string": "5.0.0",
     "react": "16.0.0-beta.2",
     "react-apollo": "1.4.8",
@@ -16,7 +17,6 @@
     "start": "NODE_ENV=production node server.js",
     "build": "next build",
     "dev": "node server.js",
-    "postinstall": "echo 'initiating next.js workaround' && (cd node_modules/next && npm install && npm run release)",
     "test": "jest",
     "lint": "eslint .",
     "precommit": "lint-staged"
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "babel-eslint": "7.2.3",
+    "babel-preset-env": "^1.6.0",
     "eslint": "3.19.0",
     "eslint-config-prettier": "2.3.0",
     "eslint-config-react-app": "1.0.5",

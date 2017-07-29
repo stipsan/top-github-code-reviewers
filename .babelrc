@@ -1,0 +1,16 @@
+{
+  "env": {
+    "development": {
+      "presets": "next-react-fiber-fork/babel"
+    },
+    "production": {
+      "presets": "next-react-fiber-fork/babel"
+    },
+    "test": {
+      "presets": [
+        ["env", { "modules": "commonjs" }],
+        "next-react-fiber-fork/babel"
+      ]
+    }
+  }
+}

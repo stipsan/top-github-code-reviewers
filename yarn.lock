@@ -838,7 +838,7 @@ babel-plugin-transform-strict-mode@^6.24.1:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
 
-babel-preset-env@1.6.0:
+babel-preset-env@1.6.0, babel-preset-env@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.6.0.tgz#2de1c782a780a0a5d605d199c957596da43c44e4"
   dependencies:
@@ -896,7 +896,7 @@ babel-preset-react@6.24.1:
     babel-plugin-transform-react-jsx-source "^6.22.0"
     babel-preset-flow "^6.23.0"
 
-babel-register@^6.24.1:
+babel-register@6.24.1, babel-register@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-register/-/babel-register-6.24.1.tgz#7e10e13a2f71065bdfad5a1787ba45bca6ded75f"
   dependencies:
@@ -3533,9 +3533,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-"next@https://github.com/arunoda/next.js#react-fiber-support":
+next-react-fiber-fork@^3.0.1-beta.19:
   version "3.0.1-beta.19"
-  resolved "https://github.com/arunoda/next.js#921bfe1486dc61c2962defc164dabfc5fb9de9a1"
+  resolved "https://registry.yarnpkg.com/next-react-fiber-fork/-/next-react-fiber-fork-3.0.1-beta.19.tgz#0e726b94351ef5b4baa9310347fa2f10196684eb"
   dependencies:
     ansi-html "0.0.7"
     babel-core "6.25.0"
