@@ -16,26 +16,22 @@ class App extends Component {
 
     const { topReviewers } = calcScores(repository.pullRequests)
 
-    const height = (64 * topReviewers.length) + 32
+    const rowsTotal = topReviewers.length
+    const rowsHeight = 64 * rowsTotal
+    const height = rowsHeight + 64
 
     return (
       <svg
-        width="100%"
+        width={`${width / 1.5}px`}
         height="100%"
         viewBox={`0 0 ${width} ${height}`}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
       >
         <title>Artboard</title>
-        <g fill="none" fillRule="evenodd">
-          <text
-            fontFamily="Helvetica"
-            fontSize="22"
-            fill="#586069"
-            x="72"
-            y="24"
-          >
-              TOP CODE REVIEWERS
+        <g fill="none" fillRule="evenodd" fontFamily="Helvetica">
+          <text fontSize="22" fill="#586069" x="72" y="24">
+            TOP CODE REVIEWERS
           </text>
           <text
             fontFamily="Helvetica"
@@ -56,7 +52,11 @@ class App extends Component {
               index={index}
             />
           )}
-          <rect fill="url(#b)" x="79" y="97" width="51" height="47" rx="8" />
+          <path
+            d={`M 0 ${rowsHeight + 32} h ${width}`}
+            stroke="#EAECEF"
+            strokeLinecap="square"
+          />
         </g>
       </svg>
     )

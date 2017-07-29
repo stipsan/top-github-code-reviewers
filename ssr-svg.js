@@ -1,4 +1,4 @@
-import ReactDOMServer from 'react-dom/server'
+import ReactDOMNodeStream from 'react-dom/node-stream'
 
 import { ApolloProvider, getDataFromTree } from 'react-apollo'
 
@@ -27,11 +27,9 @@ export default (fallbackToken = process.env.GITHUB_TOKEN) => (
   getDataFromTree(app)
     .then(() => {
       // We are ready to render for real
-      const html = ReactDOMServer.renderToStaticMarkup(app)
-
-      res.status(200)
-      res.send(`<!doctype html>\n${html}`)
-      res.end()
+      res.set('Content-Type', 'image/svg+xml')
+      //res.send(ReactDOMNodeStream.renderToStaticStream(app))
+      ReactDOMNodeStream.renderToStaticStream(app).pipe(res)
     })
     .catch(next)
 }

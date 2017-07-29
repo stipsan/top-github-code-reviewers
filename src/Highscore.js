@@ -51,7 +51,7 @@ export default props => {
       <path
         d={`M 0 ${yTop} h ${width}`}
         stroke="#EAECEF"
-        stroke-linecap="square"
+        strokeLinecap="square"
       />
     </g>
   )
