@@ -17,5 +17,9 @@
     "build": "next build",
     "dev": "node server.js",
     "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "20.0.4",
+    "react-test-renderer": "15.6.1"
   }
 }
