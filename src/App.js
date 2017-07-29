@@ -13,7 +13,6 @@ class App extends Component {
     if (loading) {
       return false
     }
-    const data = JSON.stringify(calcScores(repository.pullRequests), null, 2)
 
     const { topReviewers } = calcScores(repository.pullRequests)
 
