@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Rank = ({ num }) => {
+const Rank = num => {
   if (num === 1) {
     return '🥇'
   }
@@ -32,7 +32,7 @@ export default props => {
         x={`${index < 3 ? '10' : '36'}`}
         y={yTop + (index < 3 ? 49 : 46)}
       >
-        <Rank num={index + 1} />
+        {Rank(index + 1)}
       </text>
       <text fontSize="24" fill="#000" x="72" y={yTop + 42}>
         {reviewer.author.login}
