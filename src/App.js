@@ -10,12 +10,34 @@ const width = 640
 class App extends Component {
   state = { foo: 'bar' }
 
+  componentWillMount() {
+    // Only run this on the server
+    if (this.props.data.loading) {
+      return
+    }
+
+    const avatarUrls = new Map()
+    this.props.data.repository.pullRequests.edges.forEach(edge => {
+      // Then check each code review
+      edge.node.reviews.edges.forEach(edge => {
+        const { node } = edge
+        const { author: { login, avatarUrl } } = node
+        avatarUrls.set(login, avatarUrl)
+      })
+    })
+    this.props.onAvatarsDidLoad(avatarUrls)
+  }
+
   render() {
-    const { repository, loading } = this.props.data
+    const { repository, loading, onAvatarsDidLoad } = this.props.data
 
     if (loading) {
+      this.props.onAvatarsDidLoad('first render')
+
       return false
     }
+    global.test = this.props.data.repository
+    this.props.onAvatarsDidLoad('second render')
 
     const { topReviewers } = calcScores(repository.pullRequests)
 

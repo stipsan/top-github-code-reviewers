@@ -22,12 +22,16 @@ export default class Index extends Component {
   render() {
     const { access_token, owner, name } = this.props
 
-    const client = createClient(access_token)
+    const client = createClient(access_token, { ssrMode: true })
     return (
       <div>
         Usage instructions will appear here, soonish.
         <ApolloProvider client={client}>
-          <App owner={owner} name={name} />
+          <App
+            owner={owner}
+            name={name}
+            onAvatarsDidLoad={msg => console.log(msg)}
+          />
         </ApolloProvider>,
         <img
           src={`/svg?${queryString.stringify({ access_token, owner, name })}`}

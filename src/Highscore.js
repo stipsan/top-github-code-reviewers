@@ -21,6 +21,8 @@ export default props => {
 
   const yTop = (index + 0.5) * 64
   const yBottom = (index + 1.5) * 64
+
+  const avatarId = `avatar-${reviewer.author.login}`
   return (
     <g>
       <text
@@ -33,12 +35,16 @@ export default props => {
       >
         {Rank(index + 1)}
       </text>
+      <clipPath id={avatarId}>
+        <rect x="74" y={yTop + 10} width="44px" height="44px" rx="5" />
+      </clipPath>
       <image
         xlinkHref={reviewer.author.avatarUrl}
-        x="96"
-        y={yTop + 42}
-        height="50px"
-        width="50px"
+        clipPath={`url(#${avatarId})`}
+        x="74"
+        y={yTop + 10}
+        height="44px"
+        width="44px"
       />
       <text fontSize="24" fill="#000" x="128" y={yTop + 42}>
         {reviewer.author.login}
