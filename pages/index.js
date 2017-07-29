@@ -1,5 +1,9 @@
 import { Component } from 'react'
 import queryString from 'query-string'
+import { ApolloProvider } from 'react-apollo'
+
+import createClient from '../src/client'
+import App from '../src/App'
 
 export default class Index extends Component {
   static getInitialProps({ req }) {
@@ -17,9 +21,14 @@ export default class Index extends Component {
 
   render() {
     const { access_token, owner, name } = this.props
+
+    const client = createClient(access_token)
     return (
       <div>
         Usage instructions will appear here, soonish.
+        <ApolloProvider client={client}>
+          <App owner={owner} name={name} />
+        </ApolloProvider>,
         <img
           src={`/svg?${queryString.stringify({ access_token, owner, name })}`}
         />

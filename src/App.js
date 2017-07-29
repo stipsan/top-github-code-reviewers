@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { gql, graphql } from 'react-apollo'
+import systemFontStack from 'system-font-stack'
 
 import calcScores from './utils/calc-scores'
 import Highscore from './Highscore'
@@ -7,6 +8,8 @@ import Highscore from './Highscore'
 const width = 640
 
 class App extends Component {
+  state = { foo: 'bar' }
+
   render() {
     const { repository, loading } = this.props.data
 
@@ -27,14 +30,16 @@ class App extends Component {
         viewBox={`0 0 ${width} ${height}`}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
       >
-        <title>Artboard</title>
-        <g fill="none" fillRule="evenodd" fontFamily="Helvetica">
+        <title>
+          {this.state.foo}
+        </title>
+        <g fill="none" fillRule="evenodd" fontFamily={systemFontStack}>
           <text fontSize="22" fill="#586069" x="72" y="24">
             TOP CODE REVIEWERS
           </text>
           <text
-            fontFamily="Helvetica"
             fontSize="22"
             fill="#586069"
             textAnchor="end"

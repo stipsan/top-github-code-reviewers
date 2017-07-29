@@ -11,7 +11,8 @@
     "query-string": "5.0.0",
     "react": "16.0.0-beta.2",
     "react-apollo": "1.4.8",
-    "react-dom": "16.0.0-beta.2"
+    "react-dom": "16.0.0-beta.2",
+    "system-font-stack": "1.0.2"
   },
   "scripts": {
     "start": "NODE_ENV=production node server.js",

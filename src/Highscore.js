@@ -25,8 +25,7 @@ export default props => {
     <g>
       <text
         fontSize={`${index < 3 ? '53' : '30'}`}
-        fontWeight="900"
-        fontFamily="Helvetica"
+        fontWeight="600"
         fill="#ccc"
         textAnchor={`${index < 3 ? 'start' : 'middle'}`}
         x={`${index < 3 ? '10' : '36'}`}
@@ -34,12 +33,18 @@ export default props => {
       >
         {Rank(index + 1)}
       </text>
-      <text fontSize="24" fill="#000" x="72" y={yTop + 42}>
+      <image
+        xlinkHref={reviewer.author.avatarUrl}
+        x="96"
+        y={yTop + 42}
+        height="50px"
+        width="50px"
+      />
+      <text fontSize="24" fill="#000" x="128" y={yTop + 42}>
         {reviewer.author.login}
       </text>
 
       <text
-        fontFamily="Helvetica"
         fontSize="32px"
         fill="#586069"
         x={`${width - 32}`}
