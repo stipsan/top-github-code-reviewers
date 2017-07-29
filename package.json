@@ -6,7 +6,7 @@
     "apollo-client": "1.9.0-1",
     "express": "4.15.3",
     "graphql-tag": "2.4.2",
-    "next": "https://github.com/arunoda/next.js.git#react-fiber-support",
+    "next": "https://github.com/arunoda/next.js#react-fiber-support",
     "query-string": "5.0.0",
     "react": "16.0.0-beta.2",
     "react-apollo": "1.4.8",
@@ -16,6 +16,7 @@
     "start": "NODE_ENV=production node server.js",
     "build": "next build",
     "dev": "node server.js",
+    "postinstall": "echo 'initiating next.js workaround' && (cd node_modules/next && npm install && npm run release)",
     "test": "jest"
   },
   "devDependencies": {

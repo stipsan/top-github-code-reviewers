@@ -10,11 +10,12 @@ app.prepare()
   const server = express()
 
   server.get('/test', (req, res) => {
-    return 'bullshit'
+    res.set('Content-Type', 'image/svg+xml');
+    return res.send(new Buffer('<p>some html</p>'));
   })
 
   server.get('/b', (req, res) => {
-    return app.render(req, res, '/a', req.query)
+    return app.render(req, res, '/test', req.query)
   })
 
   server.get('*', (req, res) => {
