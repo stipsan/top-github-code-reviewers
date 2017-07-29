@@ -18,7 +18,15 @@
     "dev": "node server.js",
     "postinstall": "echo 'initiating next.js workaround' && (cd node_modules/next && npm install && npm run release)",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix --quiet",
+      "prettier --single-quote --trailing-comma es5 --no-semi --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "babel-eslint": "7.2.3",
@@ -29,7 +37,10 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "5.0.1",
     "eslint-plugin-react": "7.0.1",
+    "husky": "0.14.3",
     "jest": "20.0.4",
+    "lint-staged": "4.0.2",
+    "prettier": "1.5.3",
     "react-test-renderer": "15.6.1"
   }
 }
