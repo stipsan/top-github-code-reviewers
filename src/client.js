@@ -1,5 +1,5 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
-import { getToken } from './utils/github-token'
+import { getToken } from '../lib/github-token'
 
 export default (options = {}) => {
   const networkInterface = createNetworkInterface({

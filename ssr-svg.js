@@ -2,9 +2,9 @@ import ReactDOMNodeStream from 'react-dom/node-stream'
 
 import { ApolloProvider, getDataFromTree } from 'react-apollo'
 
-import App from './src/App'
+import App from './components/App'
 import ErrorSvg from './components/ErrorSvg'
-import { setToken } from './src/utils/github-token'
+import { setToken } from './lib/github-token'
 import createClient from './src/client'
 import avatarLoader from './avatar-loader'
 

@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { Flex, Box } from 'grid-styled'
 
 import Page from '../components/Page'
-import { setToken } from '../src/utils/github-token'
-import App from '../src/App'
+import { setToken } from '../lib/github-token'
+import App from '../components/App'
 import AppContainer from '../components/AppContainer'
 
 const primaryColor = '#344a5f'

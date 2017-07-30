@@ -1,7 +1,7 @@
 import { ApolloProvider } from 'react-apollo'
 
 import createClient from '../src/client'
-import App from '../src/App'
+import App from './App'
 
 const client = createClient()
 

@@ -2,9 +2,9 @@ import { Component } from 'react'
 import { gql, graphql } from 'react-apollo'
 import systemFontStack from 'system-font-stack'
 
-import calcScores from './utils/calc-scores'
+import calcScores from '../lib/calc-scores'
 import Highscore from './Highscore'
-import ErrorSvg from '../components/ErrorSvg'
+import ErrorSvg from './ErrorSvg'
 
 const width = 640
 
