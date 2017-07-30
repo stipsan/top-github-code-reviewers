@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { ApolloProvider } from 'react-apollo'
+import { Heading, Text } from 'styled-primitives'
 
 import { setToken } from '../src/utils/github-token'
 import App from '../src/App'
@@ -36,6 +36,7 @@ export default class Index extends Component {
       : `/${owner}/${name}`
     return (
       <div>
+        <Heading>Test</Heading>
         Usage instructions will appear here, soonish.
         <form>
           <input

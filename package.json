@@ -18,16 +18,21 @@
   "license": "MIT",
   "dependencies": {
     "apollo-client": "1.9.0-1",
+    "babel-plugin-styled-components": "1.1.7",
     "babel-plugin-transform-async-generator-functions": "^6.24.1",
     "babel-register": "6.24.1",
     "dataloader": "1.3.0",
     "express": "4.15.3",
     "got": "^7.1.0",
     "graphql-tag": "2.4.2",
+    "grid-styled": "2.0.0-10",
     "next-react-fiber-fork": "^3.0.1-beta.19",
+    "polished": "1.3.0",
     "react": "16.0.0-beta.2",
     "react-apollo": "1.4.8",
     "react-dom": "16.0.0-beta.2",
+    "styled-components": "2.1.1",
+    "styled-primitives": "1.0.0-2",
     "system-font-stack": "1.0.2"
   },
   "scripts": {
