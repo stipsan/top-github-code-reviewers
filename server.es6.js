@@ -9,12 +9,11 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
-  server.get('/test', (req, res) => {
-    res.set('Content-Type', 'image/svg+xml')
-    return res.send(new Buffer('<p>some html</p>'))
-  })
+  server.get('/:owner/:name/:access_token?.svg', ssrSvg())
 
-  server.get('/svg', ssrSvg())
+  server.get('/:owner/:name/:access_token?', (req, res) => {
+    app.render(req, res, '/index', req.params)
+  })
 
   server.get('*', (req, res) => {
     return handle(req, res)

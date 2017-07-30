@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { gql, graphql } from 'react-apollo'
 import systemFontStack from 'system-font-stack'
 
