@@ -3,6 +3,8 @@ import ReactDOMNodeStream from 'react-dom/node-stream'
 import { ApolloProvider, getDataFromTree } from 'react-apollo'
 
 import App from './src/App'
+import ErrorSvg from './components/ErrorSvg'
+import { setToken } from './src/utils/github-token'
 import createClient from './src/client'
 import avatarLoader from './avatar-loader'
 
@@ -16,7 +18,10 @@ export default (fallbackToken = process.env.GITHUB_TOKEN) => (
 
   const { access_token = fallbackToken, owner, name } = req.params
 
-  const client = createClient(access_token, { ssrMode: true })
+  // Set the token used in the auth header by the apollog client middleware
+  setToken(access_token)
+
+  const client = createClient({ ssrMode: true })
 
   const avatarGenerator = avatarLoader()
   avatarGenerator.next()
@@ -53,5 +58,12 @@ export default (fallbackToken = process.env.GITHUB_TOKEN) => (
       //res.send(ReactDOMNodeStream.renderToStaticStream(app))
       ReactDOMNodeStream.renderToStaticStream(app(avatarMap)).pipe(res)
     })
+    .catch(err => {
+      res.set('Content-Type', 'image/svg+xml')
+      ReactDOMNodeStream.renderToStaticStream(
+        <ErrorSvg error={err.message} />
+      ).pipe(res)
+    })
+    // Last resort
     .catch(next)
 }

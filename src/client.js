@@ -1,6 +1,7 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
+import { getToken } from './utils/github-token'
 
-export default (token, options = {}) => {
+export default (options = {}) => {
   const networkInterface = createNetworkInterface({
     uri: 'https://api.github.com/graphql',
   })
@@ -11,7 +12,18 @@ export default (token, options = {}) => {
         if (!req.options.headers) {
           req.options.headers = {} // Create the header object if needed.
         }
-        req.options.headers['authorization'] = `bearer ${token}`
+        req.options.headers['authorization'] = `bearer ${getToken()}`
+        next()
+      },
+    },
+  ])
+
+  networkInterface.useAfter([
+    {
+      applyAfterware({ response }, next) {
+        if (response.status === 401) {
+          throw new Error('Bad credentials, check your access_token')
+        }
         next()
       },
     },

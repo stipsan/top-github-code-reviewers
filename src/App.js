@@ -4,11 +4,12 @@ import systemFontStack from 'system-font-stack'
 
 import calcScores from './utils/calc-scores'
 import Highscore from './Highscore'
+import ErrorSvg from '../components/ErrorSvg'
 
 const width = 640
 
 class App extends Component {
-  state = { foo: 'bar' }
+  state = { foo: 'bar', error: false }
 
   componentWillMount() {
     // Only run this on the server
@@ -28,12 +29,27 @@ class App extends Component {
     this.props.onAvatarsDidLoad(avatarUrls)
   }
 
+  componentDidCatch(error, info) {
+    // Display fallback UI
+    this.setState({ error: error.message })
+  }
+
   render() {
     const { avatars = {} } = this.props
-    const { repository, loading } = this.props.data
+    const { repository, loading, error } = this.props.data
 
     if (loading) {
       return false
+    }
+
+    if (this.state.error) {
+      console.log(this.state.error)
+      return <ErrorSvg error={this.state.error} />
+    }
+
+    if (error) {
+      console.log(error)
+      return <ErrorSvg error={error.message} />
     }
 
     const { topReviewers } = calcScores(repository.pullRequests)
@@ -98,7 +114,7 @@ export default graphql(
         resetAt
       }
       repository(owner: $owner, name: $name) {
-        pullRequests(last: 100, states: MERGED) {
+        pullRequests(last: 100, states: [MERGED, OPEN, CLOSED]) {
           edges {
             node {
               reviews(last: 10) {
