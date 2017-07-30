@@ -15,6 +15,7 @@ export default class Index extends Component {
       <div>
         Usage instructions will appear here, soonish.
         {src}
+        {/*
         <ApolloProvider client={client}>
           <App
             owner={owner}
@@ -22,6 +23,7 @@ export default class Index extends Component {
             onAvatarsDidLoad={msg => console.log(msg)}
           />
         </ApolloProvider>,
+        */}
         <img src={src} />
       </div>
     )

@@ -14,7 +14,7 @@ export default (fallbackToken = process.env.GITHUB_TOKEN) => (
   // This example uses React Router, although it should work equally well with other
   // routers that support SSR
 
-  const { access_token, owner, name } = req.params
+  const { access_token = fallbackToken, owner, name } = req.params
 
   const client = createClient(access_token, { ssrMode: true })
 
