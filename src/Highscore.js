@@ -35,9 +35,9 @@ export default props => {
       >
         {Rank(index + 1)}
       </text>
-      <clippath id={avatarId}>
+      <clipPath id={avatarId}>
         <rect x="74" y={yTop + 10} width="44px" height="44px" rx="5" />
-      </clippath>
+      </clipPath>
       <image
         xlinkHref={avatarUrl || reviewer.author.avatarUrl}
         clipPath={`url(#${avatarId})`}

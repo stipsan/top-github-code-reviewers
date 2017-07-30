@@ -23,15 +23,13 @@ const batchGetAvatars = keys =>
     keys.map(url =>
       //new Promise(resolve => encode(url, {string: true}, (err, res) => resolve([url, res]))
       ///*
-      got(url).then(
-        res =>
-          console.log(res.body.toString('base64')) || [
-            url,
-            `data:${res.headers['content-type']};base64,${new Buffer(
-              res.body.replace(/^data:image\/(png|gif|jpeg);base64,/, ''),
-              'binary'
-            ).toString('base64')}`,
-          ]
+      got(url, { encoding: null }).then(
+        res => [
+          url,
+          `data:${res.headers['content-type']};base64,${res.body.toString(
+            'base64'
+          )}`,
+        ]
 
         //*/
       )
@@ -77,7 +75,6 @@ export default async function* avatarGenerator() {
         avatarArray.forEach(([avatarUrl, base64Url]) => {
           avatarMap[avatarUrl] = base64Url
         })
-        console.log('avatarMap', avatarArray, avatarMap)
         return avatarMap
       })
       .catch(err => console.error(err))
