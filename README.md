@@ -4,4 +4,4 @@
 
 ## Example
 
-[![Top Code Reviewers on facebook/react](https://top-github-code-reviewers.stipsan.io/facebook/react.svg)](https://top-github-code-reviewers.stipsan.io/facebook/react)
+[![Top Code Reviewers on facebook/react](https://top-github-code-reviewers.stipsan.io/facebook/jest.svg)](https://top-github-code-reviewers.stipsan.io/facebook/jest)
