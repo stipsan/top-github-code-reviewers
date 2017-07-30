@@ -15,6 +15,22 @@ app.prepare().then(() => {
     app.render(req, res, '/index', req.params)
   })
 
+  server.get(encodeURI('/🛡'), (req, res) => {
+    app.render(req, res, '/privacy', req.params)
+  })
+
+  server.get(encodeURI('/⚖️'), (req, res) => {
+    app.render(req, res, '/scores', req.params)
+  })
+
+  server.get(encodeURI('/👀'), (req, res) => {
+    app.render(req, res, '/source', req.params)
+  })
+
+  server.get(encodeURI('/🔑'), (req, res) => {
+    app.render(req, res, '/token', req.params)
+  })
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })

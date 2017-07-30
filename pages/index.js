@@ -21,7 +21,7 @@ export default class Index extends Component {
   }
 
   handleChange = ({ target: { name, value } }) =>
-    this.setState({ [name]: value, dirty: true })
+    this.setState({ [name]: value })
 
   handleTokenChange = event => {
     const access_token = event.target.value
@@ -62,15 +62,6 @@ export default class Index extends Component {
           : <a href={`${href}.svg`} target="_blank">
               <img src={`${href}.svg`} />
             </a>}
-        {/*
-        <ApolloProvider client={client}>
-          <App
-            owner={owner}
-            name={name}
-            onAvatarsDidLoad={msg => console.log(msg)}
-          />
-        </ApolloProvider>,
-        */}
       </div>
     )
   }

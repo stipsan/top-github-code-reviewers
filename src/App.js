@@ -68,7 +68,7 @@ class App extends Component {
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
         <title>
-          {this.state.foo}
+          {this.props.owner}/{this.props.name}
         </title>
         <g fill="none" fillRule="evenodd" fontFamily={systemFontStack}>
           <text fontSize="22" fill="#586069" x="72" y="24">
