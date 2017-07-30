@@ -30,7 +30,7 @@ const Form = styled.form`
   }
 `
 
-const SvgLink = styled.a`
+const SvgPreview = styled.div`
   display: block;
   background: white;
   border: 2px solid #f6f8fa;
@@ -70,12 +70,19 @@ const PreviewMarkdown = styled.textarea`
   width: 100%;
 `
 
+const initialState = {
+  owner: 'facebook',
+  name: 'react',
+}
+
 export default class Index extends Component {
   state = {
     owner: 'facebook',
     name: 'react',
     ...this.props.url.query,
-    dirty: false,
+    editing: { ...initialState, ...this.props.url.query },
+    previewing: { ...initialState, ...this.props.url.query },
+    dynamic: false,
   }
 
   componentDidMount() {
@@ -86,16 +93,22 @@ export default class Index extends Component {
   }
 
   handleChange = ({ target: { name, value } }) =>
-    this.setState({ [name]: value })
+    this.setState({ editing: { ...this.state.editing, [name]: value } })
+
+  handleSubmit = event => {
+    event.preventDefault()
+
+    this.setState(state => ({ previewing: state.editing, dynamic: true }))
+  }
 
   handleTokenChange = event => {
     const access_token = event.target.value
     setToken(access_token)
-    this.setState({ access_token, dirty: true })
+    this.setState({ editing: { ...this.state.editing, access_token } })
   }
 
   render() {
-    const { access_token, owner, name, dirty } = this.state
+    const { access_token, owner, name } = this.state.previewing
     const href = access_token
       ? `/${owner}/${name}/${access_token}`
       : `/${owner}/${name}`
@@ -110,38 +123,44 @@ export default class Index extends Component {
                   required
                   name="owner"
                   type="text"
-                  value={owner}
+                  value={this.state.editing.owner}
                   onChange={this.handleChange}
                 />
                 <Input
                   required
                   name="name"
                   type="text"
-                  value={name}
+                  value={this.state.editing.name}
                   onChange={this.handleChange}
                 />
                 <Input
                   type="text"
-                  value={access_token}
+                  value={this.state.editing.access_token}
                   onChange={this.handleTokenChange}
                   placeholder="Personal Access Token"
                   title="Only needed for private repositories"
                 />
-                <Submit type="submit" value="Preview SVG" />
+                <Submit
+                  type="submit"
+                  value="Preview SVG"
+                  onClick={this.handleSubmit}
+                />
                 <Header>Markdown</Header>
                 <PreviewMarkdown
                   readonly
-                  value={`[![Top Code Reviewers](https://top-github-code-reviewers.stipsan.io/${href}.svg)](https://top-github-code-reviewers.stipsan.io/${href})`}
+                  value={`[![Top Code Reviewers](https://top-github-code-reviewers.stipsan.io${href}.svg)](https://top-github-code-reviewers.stipsan.io${href})`}
                 />
               </Flex>
             </Form>
           </Box>
           <Box>
-            {dirty
-              ? <AppContainer key={access_token} owner={owner} name={name} />
-              : <SvgLink href={`${href}.svg`} target="_blank">
-                  <img src={`${href}.svg`} />
-                </SvgLink>}
+            <SvgPreview>
+              {this.state.dynamic && access_token
+                ? <AppContainer key={access_token} owner={owner} name={name} />
+                : <a href={`${href}.svg`} target="_blank">
+                    <img src={`${href}.svg`} />
+                  </a>}
+            </SvgPreview>
           </Box>
         </Flex>
       </Page>

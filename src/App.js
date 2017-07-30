@@ -39,7 +39,7 @@ class App extends Component {
     const { repository, loading, error } = this.props.data
 
     if (loading) {
-      return false
+      return <svg width={`${width / 1.5}px`} />
     }
 
     if (this.state.error) {
