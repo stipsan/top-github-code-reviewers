@@ -93,6 +93,15 @@ class App extends Component {
               index={index}
             />
           )}
+          <text
+            fontSize="18"
+            fill="#586069"
+            textAnchor="end"
+            x={`${width - 24}`}
+            y={rowsHeight + 56}
+          >
+            Last updated: {new Date().toUTCString()}
+          </text>
           <path
             d={`M 0 ${rowsHeight + 32} h ${width}`}
             stroke="#EAECEF"
