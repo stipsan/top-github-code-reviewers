@@ -32,7 +32,6 @@
     "react-apollo": "1.4.8",
     "react-dom": "16.0.0-beta.2",
     "styled-components": "2.1.1",
-    "styled-primitives": "1.0.0-2",
     "system-font-stack": "1.0.2"
   },
   "scripts": {

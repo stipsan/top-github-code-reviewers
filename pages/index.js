@@ -1,9 +1,12 @@
 import { Component } from 'react'
-import { Heading, Text } from 'styled-primitives'
+import styled from 'styled-components'
 
+import Page from '../components/Page'
 import { setToken } from '../src/utils/github-token'
 import App from '../src/App'
 import AppContainer from '../components/AppContainer'
+
+const Input = styled.input`border-radius: 3px;`
 
 export default class Index extends Component {
   state = {
@@ -35,23 +38,22 @@ export default class Index extends Component {
       ? `/${owner}/${name}/${access_token}`
       : `/${owner}/${name}`
     return (
-      <div>
-        <Heading>Test</Heading>
+      <Page>
         Usage instructions will appear here, soonish.
         <form>
-          <input
+          <Input
             name="owner"
             type="text"
             value={owner}
             onChange={this.handleChange}
           />
-          <input
+          <Input
             name="name"
             type="text"
             value={name}
             onChange={this.handleChange}
           />
-          <input
+          <Input
             type="text"
             value={access_token}
             onChange={this.handleTokenChange}
@@ -63,7 +65,7 @@ export default class Index extends Component {
           : <a href={`${href}.svg`} target="_blank">
               <img src={`${href}.svg`} />
             </a>}
-      </div>
+      </Page>
     )
   }
 }
