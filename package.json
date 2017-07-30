@@ -2,6 +2,20 @@
   "name": "top-github-code-reviewers",
   "version": "0.1.0",
   "private": true,
+  "now": {
+    "public": true,
+    "alias": "top-github-code-reviewers.stipsan.io",
+    "env": {
+      "NODE_ENV": "production",
+      "GITHUB_TOKEN": "@github-token"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stipsan/top-github-code-reviewers.git"
+  },
+  "author": "Stian Didriksen <stipsan@gmail.com> (https://stipsan.me)",
+  "license": "MIT",
   "dependencies": {
     "apollo-client": "1.9.0-1",
     "babel-plugin-transform-async-generator-functions": "^6.24.1",
