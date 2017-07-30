@@ -17,7 +17,7 @@ const Rank = num => {
 }
 
 export default props => {
-  const { reviewer, width, height, index } = props
+  const { reviewer, width, height, index, avatarUrl } = props
 
   const yTop = (index + 0.5) * 64
   const yBottom = (index + 1.5) * 64
@@ -35,11 +35,11 @@ export default props => {
       >
         {Rank(index + 1)}
       </text>
-      <clipPath id={avatarId}>
+      <clippath id={avatarId}>
         <rect x="74" y={yTop + 10} width="44px" height="44px" rx="5" />
-      </clipPath>
+      </clippath>
       <image
-        xlinkHref={reviewer.author.avatarUrl}
+        xlinkHref={avatarUrl || reviewer.author.avatarUrl}
         clipPath={`url(#${avatarId})`}
         x="74"
         y={yTop + 10}

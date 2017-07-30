@@ -29,15 +29,12 @@ class App extends Component {
   }
 
   render() {
-    const { repository, loading, onAvatarsDidLoad } = this.props.data
+    const { avatars = {} } = this.props
+    const { repository, loading } = this.props.data
 
     if (loading) {
-      this.props.onAvatarsDidLoad('first render')
-
       return false
     }
-    global.test = this.props.data.repository
-    this.props.onAvatarsDidLoad('second render')
 
     const { topReviewers } = calcScores(repository.pullRequests)
 
@@ -73,6 +70,7 @@ class App extends Component {
           {topReviewers.map((reviewer, index) =>
             <Highscore
               key={reviewer.author.login}
+              avatarUrl={avatars[reviewer.author.avatarUrl]}
               height={height}
               width={width}
               reviewer={reviewer}

@@ -1,5 +1,4 @@
 import ReactDOMNodeStream from 'react-dom/node-stream'
-import ReactDOMServer from 'react-dom/server'
 
 import { ApolloProvider, getDataFromTree } from 'react-apollo'
 
@@ -27,30 +26,30 @@ export default (fallbackToken = process.env.GITHUB_TOKEN) => (
     // @todo error handling
   })
 
-  const app = (
+  const app = (avatars = {}) =>
     <ApolloProvider client={client}>
       <App
+        avatars={avatars}
         owner={owner}
         name={name}
         onAvatarsDidLoad={urls => avatarGenerator.next(urls)}
       />
     </ApolloProvider>
-  )
 
   // Run all graphql queries
-  getDataFromTree(app)
-    .then(() => avatarPromise)
+  getDataFromTree(app())
+    .then(() => Promise.resolve(avatarPromise))
     .then(avatars => {
       console.log('renders!', avatars)
+      const avatarMap = {}
+      avatars.forEach(([avatarUrl, base64Url]) => {
+        avatarMap[avatarUrl] = base64Url
+      })
+      console.log('avatarMap!', avatarMap)
       // We are ready to render for real
       res.set('Content-Type', 'image/svg+xml')
       //res.send(ReactDOMNodeStream.renderToStaticStream(app))
-      const html = ReactDOMServer.renderToStaticMarkup(app)
-      console.log('initial html', html)
-      setTimeout(
-        () => ReactDOMNodeStream.renderToStaticStream(app).pipe(res),
-        6000
-      )
+      ReactDOMNodeStream.renderToStaticStream(app(avatarMap)).pipe(res)
     })
     .catch(next)
 }
