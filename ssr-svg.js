@@ -40,12 +40,10 @@ export default (fallbackToken = process.env.GITHUB_TOKEN) => (
   getDataFromTree(app())
     .then(() => Promise.resolve(avatarPromise))
     .then(avatars => {
-      console.log('renders!', avatars)
       const avatarMap = {}
       avatars.forEach(([avatarUrl, base64Url]) => {
         avatarMap[avatarUrl] = base64Url
       })
-      console.log('avatarMap!', avatarMap)
       // We are ready to render for real
       res.set('Content-Type', 'image/svg+xml')
       //res.send(ReactDOMNodeStream.renderToStaticStream(app))

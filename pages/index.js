@@ -36,7 +36,6 @@ export default class Index extends Component {
         <img
           src={`/svg?${queryString.stringify({ access_token, owner, name })}`}
         />
-        <img src="https://s3-us-west-2.amazonaws.com/svgporn.com/logos/apiary.svg" />
       </div>
     )
   }

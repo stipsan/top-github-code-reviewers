@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Rank = num => {
   if (num === 1) {
     return '🥇'
