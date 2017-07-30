@@ -45,6 +45,10 @@ export default (fallbackToken = process.env.GITHUB_TOKEN) => (
         avatarMap[avatarUrl] = base64Url
       })
       // We are ready to render for real
+      res.set(
+        'Cache-Control',
+        `public, max-age=${2 /* hours */ * 60 /* minutes */ * 60 /* seconds */}`
+      )
       res.set('Content-Type', 'image/svg+xml')
       //res.send(ReactDOMNodeStream.renderToStaticStream(app))
       ReactDOMNodeStream.renderToStaticStream(app(avatarMap)).pipe(res)
