@@ -1,1 +1,1 @@
-export default () => <span>How scores are calculated</span>
+export default () => <span>How scores are calculated</span>;

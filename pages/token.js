@@ -1,1 +1,1 @@
-export default () => <span>About the token</span>
+export default () => <span>About the token</span>;

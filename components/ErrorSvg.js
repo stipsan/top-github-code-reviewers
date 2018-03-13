@@ -1,4 +1,4 @@
-export default ({ error }) =>
+export default ({ error }) => (
   <svg
     width="500px"
     height="40px"
@@ -13,3 +13,4 @@ export default ({ error }) =>
       </text>
     </g>
   </svg>
+);

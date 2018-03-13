@@ -1,1 +1,1 @@
-export default () => <span>Privacy policy</span>
+export default () => <span>Privacy policy</span>;

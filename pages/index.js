@@ -1,13 +1,13 @@
-import { Component } from 'react'
-import styled from 'styled-components'
-import { Flex, Box } from 'grid-styled'
+import { Component } from "react";
+import styled from "styled-components";
+import { Flex, Box } from "grid-styled";
 
-import Page from '../components/Page'
-import { setToken } from '../lib/github-token'
-import App from '../components/App'
-import AppContainer from '../components/AppContainer'
+import Page from "../components/Page";
+import { setToken } from "../lib/github-token";
+import App from "../components/App";
+import AppContainer from "../components/AppContainer";
 
-const primaryColor = '#344a5f'
+const primaryColor = "#344a5f";
 
 const Input = styled.input`
   border-radius: 4px;
@@ -17,7 +17,7 @@ const Input = styled.input`
   width: 100%;
   margin: 3px;
   padding: 5px;
-`
+`;
 
 const Form = styled.form`
   & > div {
@@ -28,7 +28,7 @@ const Form = styled.form`
     border: 2px solid #f6f8fa;
     border-radius: 4px;
   }
-`
+`;
 
 const SvgPreview = styled.div`
   display: block;
@@ -39,7 +39,7 @@ const SvgPreview = styled.div`
   img {
     width: 100%;
   }
-`
+`;
 
 const Submit = styled.input`
   display: block;
@@ -56,9 +56,11 @@ const Submit = styled.input`
   :invalid & {
     pointer-events: none;
   }
-`
+`;
 
-const Header = styled.h2`color: ${primaryColor};`
+const Header = styled.h2`
+  color: ${primaryColor};
+`;
 
 const PreviewMarkdown = styled.textarea`
   display: block;
@@ -68,50 +70,50 @@ const PreviewMarkdown = styled.textarea`
   padding: 10px;
   min-height: 128px;
   width: 100%;
-`
+`;
 
 const initialState = {
-  owner: 'facebook',
-  name: 'react',
-}
+  owner: "facebook",
+  name: "react"
+};
 
 export default class Index extends Component {
   state = {
-    owner: 'facebook',
-    name: 'react',
+    owner: "facebook",
+    name: "react",
     ...this.props.url.query,
     editing: { ...initialState, ...this.props.url.query },
     previewing: { ...initialState, ...this.props.url.query },
-    dynamic: false,
-  }
+    dynamic: false
+  };
 
   componentDidMount() {
     if (this.state.access_token) {
       // Set token in case the customizer is loaded
-      setToken(this.state.access_token)
+      setToken(this.state.access_token);
     }
   }
 
   handleChange = ({ target: { name, value } }) =>
-    this.setState({ editing: { ...this.state.editing, [name]: value } })
+    this.setState({ editing: { ...this.state.editing, [name]: value } });
 
   handleSubmit = event => {
-    event.preventDefault()
+    event.preventDefault();
 
-    this.setState(state => ({ previewing: state.editing, dynamic: true }))
-  }
+    this.setState(state => ({ previewing: state.editing, dynamic: true }));
+  };
 
   handleTokenChange = event => {
-    const access_token = event.target.value
-    setToken(access_token)
-    this.setState({ editing: { ...this.state.editing, access_token } })
-  }
+    const access_token = event.target.value;
+    setToken(access_token);
+    this.setState({ editing: { ...this.state.editing, access_token } });
+  };
 
   render() {
-    const { access_token, owner, name } = this.state.previewing
+    const { access_token, owner, name } = this.state.previewing;
     const href = access_token
       ? `/${owner}/${name}/${access_token}`
-      : `/${owner}/${name}`
+      : `/${owner}/${name}`;
     return (
       <Page>
         <Flex wrap align="flex-start" justify="space-around" pt={3} pb={3}>
@@ -155,15 +157,17 @@ export default class Index extends Component {
           </Box>
           <Box>
             <SvgPreview>
-              {this.state.dynamic && access_token
-                ? <AppContainer key={access_token} owner={owner} name={name} />
-                : <a href={`${href}.svg`} target="_blank">
-                    <img src={`${href}.svg`} />
-                  </a>}
+              {this.state.dynamic && access_token ? (
+                <AppContainer key={access_token} owner={owner} name={name} />
+              ) : (
+                <a href={`${href}.svg`} target="_blank">
+                  <img src={`${href}.svg`} />
+                </a>
+              )}
             </SvgPreview>
           </Box>
         </Flex>
       </Page>
-    )
+    );
   }
 }
