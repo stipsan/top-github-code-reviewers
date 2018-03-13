@@ -1,34 +1,34 @@
 const Rank = num => {
   if (num === 1) {
-    return '🥇'
+    return "🥇";
   }
 
   if (num === 2) {
-    return '🥈'
+    return "🥈";
   }
 
   if (num === 3) {
-    return '🥉'
+    return "🥉";
   }
 
-  return num
-}
+  return num;
+};
 
 export default props => {
-  const { reviewer, width, height, index, avatarUrl } = props
+  const { reviewer, width, height, index, avatarUrl } = props;
 
-  const yTop = (index + 0.5) * 64
-  const yBottom = (index + 1.5) * 64
+  const yTop = (index + 0.5) * 64;
+  const yBottom = (index + 1.5) * 64;
 
-  const avatarId = `avatar-${reviewer.author.login}`
+  const avatarId = `avatar-${reviewer.author.login}`;
   return (
     <g>
       <text
-        fontSize={`${index < 3 ? '53' : '30'}`}
+        fontSize={`${index < 3 ? "53" : "30"}`}
         fontWeight="600"
         fill="#ccc"
-        textAnchor={`${index < 3 ? 'start' : 'middle'}`}
-        x={`${index < 3 ? '10' : '36'}`}
+        textAnchor={`${index < 3 ? "start" : "middle"}`}
+        x={`${index < 3 ? "10" : "36"}`}
         y={yTop + (index < 3 ? 49 : 46)}
       >
         {Rank(index + 1)}
@@ -63,5 +63,5 @@ export default props => {
         strokeLinecap="square"
       />
     </g>
-  )
-}
+  );
+};

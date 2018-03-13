@@ -1,1 +1,1 @@
-export default () => <span>View the source</span>
+export default () => <span>View the source</span>;
